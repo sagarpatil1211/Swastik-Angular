@@ -23,7 +23,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ],
+           ],
             "styles": [
               "src/assets/vendors/feather/feather.css",
               "src/assets/vendors/ti-icons/css/themify-icons.css",

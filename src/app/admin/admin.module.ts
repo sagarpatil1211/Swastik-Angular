@@ -6,6 +6,8 @@ import { LandingComponent } from './landing.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
+import { FarmersComponent } from './farmers/farmers.component';
 
 
 
@@ -13,6 +15,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     LandingComponent,
     DashboardComponent,
+    AdminComponent,
+    FarmersComponent,
     
 
   ],
