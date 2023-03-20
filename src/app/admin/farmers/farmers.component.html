@@ -1,1 +1,160 @@
-<p>farmers works!</p>
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card ">
+        <div class="card-body row justify-content-between">
+            <div class="col-md-4">
+            <h5 class="card-title">Farmers</h5>
+            </div>
+            
+           <div class="col-md-4">
+            <button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Add Farmer<i class="ti-arrow-circle-right ms-1"></i></button>
+           </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="card-body">
+    <!-- Modal starts -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Farmer</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="1">Name </label>
+                                    <input type="text" class="form-control" id="1" placeholder="Enter Username"
+                                        formControlName="name">
+                                    <em class="text-danger text-small"
+                                        *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please
+                                        Enter
+                                        Name </em>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="2">Email</label>
+                                    <input type="email" class="form-control" id="2" placeholder="Enter Email"
+                                        formControlName="email">
+                                    <em class="text-danger text-small"
+                                        *ngIf="formdata.controls.email.touched && formdata.controls.email.invalid">Please
+                                        Enter
+                                        Email </em>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="5">Password</label>
+                                    <input type="password" class="form-control" id="5" placeholder="Enter Password"
+                                        formControlName="password">
+                                    <em class="text-danger text-small"
+                                        *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid">Please
+                                        Enter Password </em>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="3">Mobile No.</label>
+                                    <input type="text" class="form-control" id="3" placeholder="Enter Mobile No."
+                                        formControlName="mobileno">
+                                    <em class="text-danger text-small"
+                                        *ngIf="formdata.controls.mobileno.touched && formdata.controls.mobileno.invalid">Please
+                                        Enter Mobile No. </em>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="4">Landspace</label>
+                                    <input type="text" class="form-control" id="4" placeholder="Enter Landspace"
+                                        formControlName="landspace">
+                                    <em class="text-danger text-small"
+                                        *ngIf="formdata.controls.landspace.touched && formdata.controls.landspace.invalid">Please
+                                        Enter Landspace </em>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary me-2"
+                                [disabled]="formdata.invalid">Submit</button>
+
+                            <button type="button" class="btn btn-danger" id="btnclose" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal Ends -->
+</div>
+
+
+
+
+
+
+<!-- -----------------------------------Table------------------------------- -->
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Farmers</h4>
+        
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Action</th>
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Mobile No.</th>
+                            <th>Landspace</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of datas , let i=index">
+                            <td>
+                                <button type="button" class="btn btn-primary btn-rounded btn-icon"  data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)="edit(data._id)" >
+                                    <i class="ti-pencil"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-danger ms-2 text-white btn-rounded btn-icon">
+                                    <i class="ti-trash"></i>
+                                  </button>
+                            </td>
+                            <td>{{ i+1 }}</td>
+                            <td>{{ data.name }}</td>
+                            <td>{{ data.email }}</td>
+                            <td>{{ data.password }}</td>
+                            <td>{{ data.mobileno }}</td>
+                            <td>{{ data.landspace }}</td>
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

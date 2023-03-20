@@ -6,8 +6,9 @@ import { LandingComponent } from './landing.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
 import { FarmersComponent } from './farmers/farmers.component';
+import { AdminComponent } from './admin/admin.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,7 @@ import { FarmersComponent } from './farmers/farmers.component';
     LandingComponent,
     DashboardComponent,
     AdminComponent,
-    FarmersComponent,
+    FarmersComponent
     
 
   ],
@@ -24,7 +25,8 @@ import { FarmersComponent } from './farmers/farmers.component';
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
 
     
   ]
