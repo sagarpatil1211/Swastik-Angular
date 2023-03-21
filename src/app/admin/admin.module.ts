@@ -7,8 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { FarmersComponent } from './farmers/farmers.component';
-import { AdminComponent } from './admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CropsComponent } from './crops/crops.component';
 
 
 
@@ -16,8 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     LandingComponent,
     DashboardComponent,
-    AdminComponent,
-    FarmersComponent
+    FarmersComponent,
+    CropsComponent
     
 
   ],

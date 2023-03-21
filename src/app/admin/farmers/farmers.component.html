@@ -1,22 +1,16 @@
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card ">
-        <div class="card-body row justify-content-between">
-            <div class="col-md-4">
+        <div class="card-body d-flex justify-content-between">
             <h5 class="card-title">Farmers</h5>
-            </div>
             
-           <div class="col-md-4">
             <button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal"
             data-bs-target="#exampleModal">Add Farmer<i class="ti-arrow-circle-right ms-1"></i></button>
-           </div>
 
         </div>
     </div>
 </div>
 
-
-<div class="card-body">
-    <!-- Modal starts -->
+<!-- Modal starts -->
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -93,7 +87,7 @@
                             <button type="submit" class="btn btn-primary me-2"
                                 [disabled]="formdata.invalid">Submit</button>
 
-                            <button type="button" class="btn btn-danger" id="btnclose" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-danger" id="btnclose" data-bs-dismiss="modal" (click)="reset()">Cancel</button>
                         </div>
 
                     </form>
@@ -103,7 +97,6 @@
         </div>
     </div>
     <!-- Modal Ends -->
-</div>
 
 
 
@@ -129,6 +122,7 @@
                             <th>Password</th>
                             <th>Mobile No.</th>
                             <th>Landspace</th>
+                            <th>Recommendation</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -138,7 +132,7 @@
                                 data-bs-target="#exampleModal" (click)="edit(data._id)" >
                                     <i class="ti-pencil"></i>
                                   </button>
-                                  <button type="button" class="btn btn-danger ms-2 text-white btn-rounded btn-icon">
+                                  <button type="button" class="btn btn-danger ms-2 text-white btn-rounded btn-icon" (click)="delete(data._id)">
                                     <i class="ti-trash"></i>
                                   </button>
                             </td>
@@ -148,6 +142,8 @@
                             <td>{{ data.password }}</td>
                             <td>{{ data.mobileno }}</td>
                             <td>{{ data.landspace }}</td>
+                            <th>{{ 5 }}</th>
+
 
                         </tr>
 
@@ -158,3 +154,7 @@
         </div>
     </div>
 </div>
+
+
+<!-- -------------------------------------------------------------------------- -->
+

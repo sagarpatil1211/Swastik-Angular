@@ -3,11 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/api.service';
 
 @Component({
-  selector: 'app-farmers',
-  templateUrl: './farmers.component.html',
-  styleUrls: ['./farmers.component.css']
+  selector: 'app-crops',
+  templateUrl: './crops.component.html',
+  styleUrls: ['./crops.component.css']
 })
-export class FarmersComponent implements OnInit {
+export class CropsComponent implements OnInit {
 
   formdata: any;
   datas: any;
@@ -24,14 +24,9 @@ export class FarmersComponent implements OnInit {
     this.id = "";
     this.formdata = new FormGroup({
       name: new FormControl("", Validators.compose([Validators.required])),
-      email: new FormControl("", Validators.compose([Validators.required])),
-      mobileno: new FormControl("", Validators.compose([Validators.required])),
-      landspace: new FormControl("", Validators.compose([Validators.required])),
-      password: new FormControl("", Validators.compose([Validators.required])),
-
     })
 
-    this.api.get("farmers").subscribe((result: any) => {
+    this.api.get("crops").subscribe((result: any) => {
       // console.log(result);
       this.datas = result.data
     });
@@ -44,16 +39,11 @@ export class FarmersComponent implements OnInit {
   edit(id: any) {
     this.id = id;
     // console.log(id);
-    this.api.get("farmers/" + id).subscribe((result: any) => {
+    this.api.get("crops/" + id).subscribe((result: any) => {
       // console.log(result);
 
       this.formdata.patchValue({
         name: result.data.name,
-        email: result.data.email,
-        mobileno: result.data.mobileno,
-        landspace: result.data.landspace,
-        password: result.data.password
-
       })
     })
 
@@ -63,7 +53,7 @@ export class FarmersComponent implements OnInit {
     // console.log(data);
 
     if (this.id != "") {
-      this.api.put("farmers/" + this.id, data).subscribe((result: any) => {
+      this.api.put("crops/" + this.id, data).subscribe((result: any) => {
         // console.log(result);
         
         if (result.status == "success") {
@@ -76,11 +66,12 @@ export class FarmersComponent implements OnInit {
     }
 
     else{
-      this.api.post("farmers", data).subscribe((result: any) => {
+      this.api.post("crops", data).subscribe((result: any) => {
         if (result.status == "success") {
           this.load();
           let element: HTMLElement = document.getElementById('btnclose') as HTMLElement;
           element.click();
+          // document.getElementById("exampleModal")?.classList.remove("modal-open");
   
         }
       })
@@ -88,7 +79,7 @@ export class FarmersComponent implements OnInit {
   }
 
   delete(id:any){
-    this.api.delete("farmers/" + id).subscribe((result:any)=>{
+    this.api.delete("crops/" + id).subscribe((result:any)=>{
       // console.log(result);
       if(result.status == "success"){
         this.load();
@@ -99,6 +90,7 @@ export class FarmersComponent implements OnInit {
       
     })
   }
+
 
 
 }

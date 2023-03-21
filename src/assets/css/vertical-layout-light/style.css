@@ -28984,6 +28984,8 @@ div.tagsinput span.tag a {
 }
 
 .content-wrapper {
+  position: relative;
+  left: 235px;
   background: #F5F7FF;
   padding: 2.375rem 2.375rem;
   width: 100%;
@@ -28999,6 +29001,7 @@ div.tagsinput span.tag a {
 
 /* Sidebar */
 .sidebar {
+  position: fixed;
   min-height: calc(100vh - 100px);
   background: #fff;
   font-family: "Nunito", sans-serif;
@@ -29324,6 +29327,8 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-brand-wrapper {
+  position: fixed;
+  top: 0;
   background: #ffffff;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
@@ -29372,6 +29377,9 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-menu-wrapper {
+  position: fixed;
+  top: 0;
+  left: 235px;
   background: #ffffff;
   transition: width 0.25s ease;
   -webkit-transition: width 0.25s ease;
