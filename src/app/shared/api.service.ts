@@ -1,29 +1,39 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http : HttpClient) { }
+  baseurl="http://localhost:8081/";
 
-  baseurl = "http://localhost:8081/";
+  constructor(private http:HttpClient,private toastr:ToastrService) { }
 
-  post(url:string,data:any){
-    return this.http.post(this.baseurl + url, data)
+  getheader():any{
+    let auth_token = localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + auth_token
+    })
+    return headers;
   }
 
-  get(url:string){
-    return this.http.get(this.baseurl + url)
-  }
+  get(api:string){
+    return this.http.get(this.baseurl + api, {headers:this.getheader()})
+  };
 
-  put(url:string, data:any){
-    return this.http.put(this.baseurl + url, data)
-  }
+  post(api:string, data:any){
+    return this.http.post(this.baseurl + api, data, {headers:this.getheader()})
+  };
 
-  delete(url:string){
-    return this.http.delete(this.baseurl+ url)
-  }
+  put(api:string, data:any){
+    return this.http.put(this.baseurl + api, data, {headers:this.getheader()})
+  };
+
+  delete(api:string){
+    return this.http.delete(this.baseurl + api, {headers:this.getheader()})
+  };
 
 }

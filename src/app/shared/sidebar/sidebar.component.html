@@ -6,24 +6,28 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-
-
         
-    
         <li class="nav-item">
-            <a class="nav-link"  routerLink="/admin/farmers"  routerLinkActive="active">
+            <a class="nav-link" data-bs-toggle="collapse" routerLink="/admins" routerLinkActive="active" aria-expanded="false"
+                aria-controls="tables">
                 <i class="icon-grid-2 menu-icon"></i>
-                <span class="menu-title">Farmer</span>
+                <span class="menu-title">Admin</span>
             </a>
-     
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/crops"  routerLinkActive="active" aria-expanded="false"
+            <a class="nav-link" data-bs-toggle="collapse" routerLink="/farmers" routerLinkActive="active" aria-expanded="false"
+                aria-controls="tables">
+                <i class="icon-grid-2 menu-icon"></i>
+                <span class="menu-title">Farmers</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" routerLink="/crops" routerLinkActive="active" aria-expanded="false"
                 aria-controls="tables">
                 <i class="icon-grid-2 menu-icon"></i>
                 <span class="menu-title">Crops</span>
             </a>
-     
         </li>
+        
     </ul>
 </nav>

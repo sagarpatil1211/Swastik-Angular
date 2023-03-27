@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/api.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-farmers',
@@ -37,10 +38,6 @@ export class FarmersComponent implements OnInit {
     });
   }
 
-  reset(){
-    this.load();
-  }
-
   edit(id: any) {
     this.id = id;
     // console.log(id);
@@ -64,7 +61,7 @@ export class FarmersComponent implements OnInit {
 
     if (this.id != "") {
       this.api.put("farmers/" + this.id, data).subscribe((result: any) => {
-        // console.log(result);
+        console.log(result);
         
         if (result.status == "success") {
           this.load();
@@ -81,24 +78,38 @@ export class FarmersComponent implements OnInit {
           this.load();
           let element: HTMLElement = document.getElementById('btnclose') as HTMLElement;
           element.click();
+          // document.getElementById("exampleModal")?.classList.remove("modal-open");
   
         }
       })
     }
+
+ 
   }
 
   delete(id:any){
-    this.api.delete("farmers/" + id).subscribe((result:any)=>{
-      // console.log(result);
-      if(result.status == "success"){
-        this.load();
+    swal.fire({
+      title: 'Are you sure?',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.delete("farmers/" + id).subscribe((result:any)=>{
+          this.load()
+        })
+        swal.fire(
+          'Deleted!',
+         
+        )
       }
-      else{
-        alert("something went wrong")
-      }
-      
-    })
+    }) 
+  };
+
+  reset(){
+    this.load()
   }
 
 
-}
+} 

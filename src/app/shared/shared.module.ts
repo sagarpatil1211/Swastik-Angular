@@ -26,7 +26,6 @@ import {HttpClientModule} from '@angular/common/http'
     HeaderComponent,
     FooterComponent,
     SidebarComponent
-    
   ]
 })
 export class SharedModule { }

@@ -1,16 +1,16 @@
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card ">
-        <div class="card-body d-flex justify-content-between">
-            <h5 class="card-title">Farmers</h5>
-            
-            <button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal"
-            data-bs-target="#exampleModal">Add Farmer<i class="ti-arrow-circle-right ms-1"></i></button>
-
+        <div class="card-body row justify-content-between">
+            <div class="d-flex justify-content-between">
+                <h3>Farmers</h3><br>
+                <button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Add Farmer<i class="ti-arrow-circle-right ms-1"></i></button>
+            </div>
         </div>
     </div>
 </div>
-
-<!-- Modal starts -->
+<div class="card-body">
+    <!-- Modal starts -->
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                    <form autocomplete="off" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
@@ -52,7 +52,7 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="5">Password</label>
-                                    <input type="password" class="form-control" id="5" placeholder="Enter Password"
+                                    <input type="text" class="form-control" id="5" placeholder="Enter Password"
                                         formControlName="password">
                                     <em class="text-danger text-small"
                                         *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid">Please
@@ -87,7 +87,8 @@
                             <button type="submit" class="btn btn-primary me-2"
                                 [disabled]="formdata.invalid">Submit</button>
 
-                            <button type="button" class="btn btn-danger" id="btnclose" data-bs-dismiss="modal" (click)="reset()">Cancel</button>
+                            <button type="button" (click)="reset()" class="btn btn-danger" id="btnclose"
+                                data-bs-dismiss="modal">Cancel</button>
                         </div>
 
                     </form>
@@ -97,6 +98,7 @@
         </div>
     </div>
     <!-- Modal Ends -->
+</div>
 
 
 
@@ -110,7 +112,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Farmers</h4>
-        
+
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -122,19 +124,20 @@
                             <th>Password</th>
                             <th>Mobile No.</th>
                             <th>Landspace</th>
-                            <th>Recommendation</th>
+                            <th>Recommendations</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let data of datas , let i=index">
-                            <td>
-                                <button type="button" class="btn btn-primary btn-rounded btn-icon"  data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" (click)="edit(data._id)" >
+                            <td class="text-center">
+                                <button type="button" class="btn btn-primary btn-rounded btn-icon"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="edit(data._id)">
                                     <i class="ti-pencil"></i>
-                                  </button>
-                                  <button type="button" class="btn btn-danger ms-2 text-white btn-rounded btn-icon" (click)="delete(data._id)">
+                                </button>
+                                <button type="button" class="btn btn-danger ms-2 text-white btn-rounded btn-icon"
+                                    (click)="delete(data._id)">
                                     <i class="ti-trash"></i>
-                                  </button>
+                                </button>
                             </td>
                             <td>{{ i+1 }}</td>
                             <td>{{ data.name }}</td>
@@ -142,9 +145,7 @@
                             <td>{{ data.password }}</td>
                             <td>{{ data.mobileno }}</td>
                             <td>{{ data.landspace }}</td>
-                            <th>{{ 5 }}</th>
-
-
+                            <td><a class="btn btn-sm btn-warning" routerLink="/farmers/recommendations/{{ data._id }}">Recommendations</a></td>
                         </tr>
 
 
@@ -154,7 +155,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- -------------------------------------------------------------------------- -->
-

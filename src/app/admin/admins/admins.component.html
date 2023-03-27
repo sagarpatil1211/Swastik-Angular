@@ -1,0 +1,99 @@
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <h3>Admins</h3><br>
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"data-bs-target="#exampleModal-2">Add Admin<i
+                class="ti-arrow-circle-right ms-1"></i></button>
+            </div>
+           
+            <!-- Modal starts -->
+
+            <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel-2">Admin</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="forms-sample" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label for="1">Name</label>
+                                        <input type="text" class="form-control" formControlName="name" id="1"
+                                            placeholder="Name">
+                                        <em class="error text-danger small"
+                                            *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please
+                                            enter name</em>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label for="2">Username</label>
+                                        <input type="text" class="form-control" id="2" formControlName="username"
+                                            placeholder="Username">
+                                        <em class="error text-danger small"
+                                            *ngIf="formdata.controls.username.touched && formdata.controls.username.invalid">Please
+                                            enter username</em>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label for="3">Password</label>
+                                        <input type="text" class="form-control" id="3" formControlName="password"
+                                            placeholder="Password">
+                                        <em class="error text-danger small"
+                                            *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid">Please
+                                            enter password</em>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" [disabled]="formdata.invalid"  value="Submit"
+                                    class="btn btn-success me-2" />
+                                    <button type="button" class="btn btn-danger" id="btnclose" (click)="reset()"data-bs-dismiss="modal">Cancel</button>
+                                  </div>
+                            </form><br>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Ends -->
+        </div>
+    </div>
+</div>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4>Admins list</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Action</th>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of result; let i=index">
+                            <td class="text-center">
+                                <button (click)="edit(data._id)"
+                                    class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary" data-bs-toggle="modal"data-bs-target="#exampleModal-2"><i
+                                        class="ti-pencil"> </i></button> &nbsp;&nbsp;&nbsp;
+                                <button (click)="delete(data._id)"
+                                    class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger"><i class="ti-trash"
+                                        style="color:white"> </i></button>
+                            </td>
+                            <td>{{i+1}}</td>
+                            <td>{{data.name}}</td>
+                            <td>{{data.username}}</td>
+                            <td>{{data.password}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
